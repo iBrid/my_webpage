@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-content">
+                <h1>Buchi.Dev</h1>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Developer | Cloud Engineer | Creator</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Hello! I'm a passionate cloud engineer with expertise in creating modern and optimized resources in cloud environments using Infrastructure-as-Code (IaC). I love turning ideas into reality through code.</p>
+                <p>My core competencies include Azure, AWS, Terraform, CI/CD, and various modern cloud technologies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Project 1</h3>
+                <p>Managing existing Azure resouces and converting them to IaC using aztfexport to manage them in Terrafrom cloud.</p>
+            </div>
+            <div class="project-card">
+                <h3>Project 2</h3>
+                <p>Created mobile games using python, pygame, and GitHub CoPilot.</p>
+            </div>
+            <div class="project-card">
+                <h3>Project 3</h3>
+                <p>Hosted WebApps on Azure Static WebApp, creating the webapp with HTML, CSS and implemented the Static webapp using Terraform IaC.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p>Feel free to reach out through any of these channels:</p>
+                <div class="contact-links">
+                    <a href="mailto:confedd@hotmail.com" class="contact-method email">
+                        <span class="icon">📧</span>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-method linkedin">
+                        <span class="icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/iBrid" target="_blank" class="contact-method github">
+                        <span class="icon">💻</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+            <form action="mailto:your.email@example.com" method="POST" enctype="text/plain">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Buchi. All rights reserved.</p>
+    </footer>
+</body>
+</html>
