@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+        <script defer src="script.js"></script>
 </head>
 <body>
     <header>
         <nav>
             <div class="nav-content">
-                <h1>Buchi.io</h1>
-                <ul>
+                <h1>BUCHI.IO</h1>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#projects">Projects</a></li>
@@ -21,25 +27,23 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Developer | Cloud Engineer | Creator</p>
-        </div>
-    </section>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Welcome to My Portfolio</h1>
+                <p>Developer | Cloud Engineer | Creator</p>
+            </div>
+        </section>
 
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <div class="about-content">
                 <p>Hello! I'm a passionate cloud engineer with expertise in creating modern and optimized resources in cloud environments using Infrastructure-as-Code (IaC). I love turning ideas into reality through code.</p>
                 <p>My core competencies include Azure, AWS, Terraform, CI/CD, and various modern cloud technologies.</p>
                 <p>You can check out all my projects on my GitHub Page. click the Link Below for more.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects" class="projects">
+        <section id="projects" class="projects">
         <h2>My Projects</h2>
         <div class="project-grid">
             <div class="project-card">

@@ -1,0 +1,133 @@
+// Smooth scrolling for navigation links
+const navLinks = document.querySelectorAll('nav ul li a');
+const navMenu = document.getElementById('navMenu');
+const navToggle = document.getElementById('navToggle');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId.startsWith('#')) {
+            e.preventDefault();
+            document.querySelector(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+            // Close menu on mobile after click
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+            }
+        }
+    });
+});
+
+if (navToggle) {
+    navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+    });
+}
+
+// Scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Add animation classes and observe elements
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate about section
+    const aboutText = document.querySelectorAll('.about-text p');
+    aboutText.forEach((p, index) => {
+        p.classList.add('animate-on-scroll');
+        p.style.transform = 'translateX(-50px)';
+        p.style.transitionDelay = `${index * 0.2}s`;
+        observer.observe(p);
+    });
+
+    // Animate project cards
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card, index) => {
+        card.classList.add('animate-on-scroll');
+        card.style.transform = 'translateY(30px)';
+        card.style.transitionDelay = `${index * 0.15}s`;
+        observer.observe(card);
+    });
+
+    // Animate contact section
+    const contactInfo = document.querySelector('.contact-info');
+    const contactForm = document.querySelector('.contact-content form');
+    
+    if (contactInfo) {
+        contactInfo.classList.add('animate-on-scroll');
+        contactInfo.style.transform = 'translateX(-50px)';
+        observer.observe(contactInfo);
+    }
+    
+    if (contactForm) {
+        contactForm.classList.add('animate-on-scroll');
+        contactForm.style.transform = 'translateX(50px)';
+        observer.observe(contactForm);
+    }
+});
+
+// Add smooth navbar background on scroll
+window.addEventListener('scroll', function() {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+        nav.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.15)';
+    } else {
+        nav.style.backgroundColor = '#fff';
+        nav.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+    }
+});
+
+// Contact form validation and feedback
+const contactForm = document.querySelector('.contact-content form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Basic validation
+        const name = contactForm.querySelector('input[name="name"]');
+        const email = contactForm.querySelector('input[name="email"]');
+        const message = contactForm.querySelector('textarea[name="message"]');
+        let valid = true;
+        let errorMsg = '';
+        if (!name.value.trim()) {
+            valid = false;
+            errorMsg = 'Please enter your name.';
+        } else if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
+            valid = false;
+            errorMsg = 'Please enter a valid email address.';
+        } else if (!message.value.trim()) {
+            valid = false;
+            errorMsg = 'Please enter your message.';
+        }
+        if (!valid) {
+            e.preventDefault();
+            showFormMessage(errorMsg, false);
+        } else {
+            showFormMessage('Thank you! Your message will be sent via your email client.', true);
+        }
+    });
+}
+
+function showFormMessage(msg, success) {
+    let msgDiv = document.querySelector('.form-message');
+    if (!msgDiv) {
+        msgDiv = document.createElement('div');
+        msgDiv.className = 'form-message';
+        contactForm.parentNode.insertBefore(msgDiv, contactForm);
+    }
+    msgDiv.textContent = msg;
+    msgDiv.style.color = success ? 'green' : 'red';
+    msgDiv.style.marginBottom = '1rem';
+    msgDiv.style.fontWeight = 'bold';
+    msgDiv.style.textAlign = 'center';
+}
