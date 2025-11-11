@@ -259,7 +259,6 @@ section h2 {
 /* Contact Section */
 .contact {
     background-color: #f9f9f9;
-    overflow-x: hidden;
 }
 
 .contact-content {
@@ -462,14 +461,16 @@ footer {
     }
     
     .contact {
-        padding: 3rem 0.5rem;
+    padding: 3rem 1rem 3rem 0.5rem;
     }
     
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
-        padding: 0 0.5rem;
+    padding: 0 1rem 0 0;
         max-width: 100%;
+    margin-left: auto;
+    margin-right: 1rem;
     }
     
     .contact-info {
@@ -523,7 +524,8 @@ footer {
     }
     
     .contact-content {
-        padding: 0 0.25rem;
+    padding: 0 0.75rem 0 0;
+    margin-right: 0.5rem;
     }
     
     .contact-info, form {
