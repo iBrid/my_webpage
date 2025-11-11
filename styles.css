@@ -273,7 +273,7 @@ section h2 {
 
 .contact-info {
     padding: 2rem;
-    overflow: hidden;
+    overflow: visible; /* allow horizontal scroll on mobile */
 }
 
 .contact-info h3 {
