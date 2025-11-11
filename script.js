@@ -63,7 +63,7 @@ const observer = new IntersectionObserver(function(entries) {
 // Add animation classes and observe elements
 document.addEventListener('DOMContentLoaded', function() {
     // Animate about section
-    const aboutText = document.querySelectorAll('.about-text p');
+    const aboutText = document.querySelectorAll('.about-content p');
     aboutText.forEach((p, index) => {
         p.classList.add('animate-on-scroll');
         p.style.transform = 'translateX(-50px)';
