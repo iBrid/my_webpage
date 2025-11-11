@@ -222,7 +222,7 @@ section h2 {
 .about-content {
     max-width: 800px;
     margin: 0 auto;
-    text-align: justify; /* center about text across devices */
+    text-align: center; /* center about text across devices */
 }
 
 .about-content p {
@@ -506,7 +506,8 @@ footer {
     }
     
     .about-content {
-        padding: 0 0.5rem;
+        padding: 0 1rem; /* increase padding for better mobile centering */
+        text-align: center; /* ensure centered on mobile */
     }
     
     footer {
