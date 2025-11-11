@@ -89,36 +89,56 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Contact form validation and feedback
-const contactForm = document.querySelector('.contact-content form');
+// Contact form handling
+const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        // Basic validation
-        const name = contactForm.querySelector('input[name="name"]');
-        const email = contactForm.querySelector('input[name="email"]');
-        const message = contactForm.querySelector('textarea[name="message"]');
-        let valid = true;
-        let errorMsg = '';
-        if (!name.value.trim()) {
-            valid = false;
-            errorMsg = 'Please enter your name.';
-        } else if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
-            valid = false;
-            errorMsg = 'Please enter a valid email address.';
-        } else if (!message.value.trim()) {
-            valid = false;
-            errorMsg = 'Please enter your message.';
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('formName').value.trim();
+        const email = document.getElementById('formEmail').value.trim();
+        const message = document.getElementById('formMessage').value.trim();
+        
+        // Validate form
+        if (!name) {
+            showFormMessage('Please enter your name.', 'error');
+            return;
         }
-        if (!valid) {
-            e.preventDefault();
-            showFormMessage(errorMsg, false);
-        } else {
-            showFormMessage('Thank you! Your message will be sent via your email client.', true);
+        
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            showFormMessage('Please enter a valid email address.', 'error');
+            return;
         }
+        
+        if (!message) {
+            showFormMessage('Please enter your message.', 'error');
+            return;
+        }
+        
+        // Create mailto link with form data
+        const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        const mailtoLink = `mailto:connfedd@outlook.com?subject=${subject}&body=${body}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show success message
+        showFormMessage('Opening your email client... You can send the message from there.', 'success');
+        
+        // Reset form after 2 seconds
+        setTimeout(() => {
+            contactForm.reset();
+            const msgDiv = document.querySelector('.form-message');
+            if (msgDiv) {
+                msgDiv.remove();
+            }
+        }, 3000);
     });
 }
 
-function showFormMessage(msg, success) {
+function showFormMessage(msg, type) {
     let msgDiv = document.querySelector('.form-message');
     if (!msgDiv) {
         msgDiv = document.createElement('div');
@@ -126,8 +146,5 @@ function showFormMessage(msg, success) {
         contactForm.parentNode.insertBefore(msgDiv, contactForm);
     }
     msgDiv.textContent = msg;
-    msgDiv.style.color = success ? 'green' : 'red';
-    msgDiv.style.marginBottom = '1rem';
-    msgDiv.style.fontWeight = 'bold';
-    msgDiv.style.textAlign = 'center';
+    msgDiv.className = `form-message ${type}`;
 }
