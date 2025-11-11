@@ -222,6 +222,7 @@ section h2 {
 .about-content {
     max-width: 800px;
     margin: 0 auto;
+    text-align: justify; /* center about text across devices */
 }
 
 .about-content p {
