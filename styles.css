@@ -179,7 +179,7 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-    min-height: 80vh;
+    min-height: 55vh;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     display: flex;
     align-items: center;
