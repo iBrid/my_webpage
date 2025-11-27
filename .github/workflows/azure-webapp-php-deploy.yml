@@ -1,0 +1,35 @@
+name: Deploy PHP app to Azure Web App
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install dependencies (composer)
+        if: "exists('composer.json')"
+        run: |
+          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'mywebpage'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: '.'
+
+# Notes:
+# 1) Create a secret named `AZURE_WEBAPP_PUBLISH_PROFILE` in this repository containing the
+#    publish profile XML for your Azure Web App (get from the Azure Portal > Get publish profile).
+# 2) Replace `<YOUR_APP_SERVICE_NAME>` with the name of your App Service.
+# 3) If you require a different PHP version or build steps, adjust the `setup-php` or add steps.
