@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="nav-overlay" id="navOverlay"></div>
+    <header>
+        <nav>
+            <div class="nav-content">
+                <h1 class="logo-text">BUCHI.IO</h1>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <canvas id="particleCanvas"></canvas>
+        <div class="hero-content">
+            <span class="hero-greeting">Hello, I'm</span>
+            <h1 class="hero-title glitch" data-text="Buchi">Buchi</h1>
+            <p class="hero-subtitle">
+                <span class="typed-text"></span><span class="cursor">|</span>
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary pulse-animation">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span class="mouse"></span>
+            <span class="arrow"></span>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p class="fade-in-up">Hello! I'm a passionate cloud engineer with expertise in creating modern and optimized resources in cloud
+                    environments using Infrastructure-as-Code (IaC). I love turning ideas into reality through code.</p>
+                <p class="fade-in-up">My core competencies span across cloud platforms, container orchestration, and modern DevOps practices.</p>
+                <p class="fade-in-up">You can check out all my projects on my GitHub Page. Click the link below for more.</p>
+            </div>
+            <div class="skills-container">
+                <h3 class="skills-title">My Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-badge" style="animation-delay: 0s">
+                        <span class="skill-icon">☁️</span>
+                        <span class="skill-name">Azure</span>
+                    </div>
+                    <div class="skill-badge" style="animation-delay: 0.1s">
+                        <span class="skill-icon">🌐</span>
+                        <span class="skill-name">AWS</span>
+                    </div>
+                    <div class="skill-badge" style="animation-delay: 0.2s">
+                        <span class="skill-icon">⚓</span>
+                        <span class="skill-name">Kubernetes</span>
+                    </div>
+                    <div class="skill-badge" style="animation-delay: 0.3s">
+                        <span class="skill-icon">🏗️</span>
+                        <span class="skill-name">Terraform</span>
+                    </div>
+                    <div class="skill-badge" style="animation-delay: 0.4s">
+                        <span class="skill-icon">🔄</span>
+                        <span class="skill-name">CI/CD</span>
+                    </div>
+                    <div class="skill-badge" style="animation-delay: 0.5s">
+                        <span class="skill-icon">🐳</span>
+                        <span class="skill-name">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card" style="animation-delay: 0s">
+                <div class="project-icon">🏗️</div>
+                <h3>Azure IaC Migration</h3>
+                <p>Refactored existing Azure infrastructure into reproducible IaC by exporting current resources with aztfexport and managing them centrally in Terraform Cloud.</p>
+                <div class="project-tags">
+                    <span class="tag">Azure</span>
+                    <span class="tag">Terraform</span>
+                    <span class="tag">IaC</span>
+                </div>
+                <div class="card-glow"></div>
+            </div>
+            <div class="project-card" style="animation-delay: 0.15s">
+                <div class="project-icon">🎮</div>
+                <h3>Mobile Game Development</h3>
+                <p>Developed interactive mobile games leveraging Python and Pygame, with AI-assisted development using GitHub Copilot.</p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Pygame</span>
+                    <span class="tag">AI</span>
+                </div>
+                <div class="card-glow"></div>
+            </div>
+            <div class="project-card" style="animation-delay: 0.3s">
+                <div class="project-icon">🚀</div>
+                <h3>Static Web Deployment</h3>
+                <p>Deployed static site to Azure Static Web Apps, built with PHP, CSS, and JavaScript, provisioned with Terraform IaC, and GitHub Actions for CI/CD.</p>
+                <div class="project-tags">
+                    <span class="tag">Azure</span>
+                    <span class="tag">GitHub Actions</span>
+                    <span class="tag">CI/CD</span>
+                </div>
+                <div class="card-glow"></div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3 style="text-align: center;">Get in Touch</h3>
+                <p style="text-align: center;">Feel free to reach out through any of these channels:</p>
+                <div class="contact-links">
+                    <a href="mailto:connfedd@outlook.com" class="contact-method email hover-lift">
+                        <span class="icon">📧</span>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-method linkedin hover-lift">
+                        <span class="icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/iBrid" target="_blank" class="contact-method github hover-lift">
+                        <span class="icon">💻</span>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <input type="text" name="name" id="formName" placeholder=" " required>
+                    <label for="formName">Your Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" id="formEmail" placeholder=" " required>
+                    <label for="formEmail">Your Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" id="formMessage" placeholder=" " required></textarea>
+                    <label for="formMessage">Your Message</label>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <span>Send Message</span>
+                    <svg class="send-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Buchi. All rights reserved.</p>
+            <p class="footer-tagline">Built with 💙 and HTML</p>
+        </div>
+    </footer>
+</body>
+
+</html>
