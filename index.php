@@ -32,7 +32,7 @@ $projects = [
     [
         "title" => "Static Web Deployment",
         "icon" => "🚀",
-        "description" => "Deployed static site to Azure Static Web Apps, built with HTML, CSS and JavaScript, provisioned with Terraform IaC, and GitHub Actions for CI/CD.",
+        "description" => "Deployed static site to Azure Static Web Apps, built with PHP, CSS, and JavaScript, provisioned with Terraform IaC, and GitHub Actions for CI/CD.",
         "tags" => ["Azure", "GitHub Actions", "CI/CD"]
     ]
 ];
