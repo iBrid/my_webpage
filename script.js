@@ -74,10 +74,15 @@ class ParticleAnimation {
     }
     
     addEventListeners() {
-        window.addEventListener('resize', () => this.resize());
+        // Debounce resize for better performance
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => this.resize(), 100);
+        });
         window.addEventListener('mousemove', (e) => {
-            this.mouse.x = e.x;
-            this.mouse.y = e.y;
+            this.mouse.x = e.clientX;
+            this.mouse.y = e.clientY;
         });
         window.addEventListener('mouseout', () => {
             this.mouse.x = null;
@@ -261,30 +266,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add smooth navbar background on scroll
-window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-        nav.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-        nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-    } else {
-        nav.classList.remove('scrolled');
-        nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-        nav.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.05)';
-    }
-});
+// Cache DOM references for scroll handlers
+const navElement = document.querySelector('nav');
+const heroElement = document.querySelector('.hero');
+const heroContentElement = document.querySelector('.hero-content');
 
-// Parallax effect for hero section
-window.addEventListener('scroll', function() {
-    const hero = document.querySelector('.hero');
-    const heroContent = document.querySelector('.hero-content');
-    if (hero && heroContent) {
-        const scrolled = window.scrollY;
-        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-        heroContent.style.opacity = 1 - (scrolled * 0.002);
+// Throttle function for scroll events
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Combined scroll handler for better performance
+function handleScroll() {
+    const scrolled = window.scrollY;
+    
+    // Navbar background on scroll
+    if (navElement) {
+        if (scrolled > 50) {
+            navElement.classList.add('scrolled');
+            navElement.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            navElement.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+        } else {
+            navElement.classList.remove('scrolled');
+            navElement.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            navElement.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.05)';
+        }
     }
-});
+    
+    // Parallax effect for hero section
+    if (heroElement && heroContentElement) {
+        heroContentElement.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroContentElement.style.opacity = 1 - (scrolled * 0.002);
+    }
+}
+
+// Add throttled scroll event listener
+window.addEventListener('scroll', throttle(handleScroll, 16));
 
 // Enhanced form handling with validation
 const contactForm = document.getElementById('contactForm');
