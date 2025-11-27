@@ -25,7 +25,8 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path (repo root)
           api_location: "" # Api source code path - optional
-          # For a plain static site (index.html at repo root) set output_location to '.'
-          # If your app requires a framework build step, set this to the build output (e.g. 'build' or 'dist').
-          output_location: "." # Built app content directory - use '.' when deploying repo root static files
+          output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+
+
+
